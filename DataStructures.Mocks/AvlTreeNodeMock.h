@@ -20,7 +20,7 @@ namespace DataStructures
 		T getValue() const;
 		#pragma region Methods : set
 		#pragma endregion
-		void setHeight(int value);
+		void setHeight(int);
 		void setValue(T);
 		#pragma region Methods
 		#pragma endregion
@@ -35,8 +35,6 @@ namespace DataStructures
 		__declspec(property(get = getLeftTree)) AvlTreeNode<T>* LeftTree;
 		__declspec(property(get = getRightTree)) AvlTreeNode<T>* RightTree;
 		__declspec(property(get = getValue, put = setValue)) T Value;
-		#pragma region Fields
-		#pragma endregion
 	};
 
 	template<class T> AvlTreeNodeMock<T>::AvlTreeNodeMock()
@@ -78,7 +76,6 @@ namespace DataStructures
 	template<class T> void AvlTreeNodeMock<T>::setHeight(int value)
 	{
 		cerr << "AvlTreeNodeMock<T>::setHeight(int value)" << endl;
-
 	}
 	template<class T> void AvlTreeNodeMock<T>::setValue(T value)
 	{

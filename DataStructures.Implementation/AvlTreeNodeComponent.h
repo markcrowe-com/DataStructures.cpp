@@ -19,7 +19,7 @@ namespace DataStructures
 		T getValue() const;
 		#pragma region Methods : set
 		#pragma endregion
-		void setHeight(int value);
+		void setHeight(int);
 		void setLeftTree(AvlTreeNode<T>*);
 		void setRightTree(AvlTreeNode<T>*);
 		void setValue(T);
