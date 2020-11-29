@@ -95,10 +95,10 @@ namespace DataStructures
 				if(shorter)
 					switch(tree->bf)
 					{
-						case LH: tree->bf = EH; break;
-						case EH: tree->bf = RH; shorter = false;
+						case  balance::LH: tree->bf = balance::EH; break;
+						case  balance::EH: tree->bf =  balance::RH; shorter = false;
 							break;
-						case RH: DelRightBalance(tree, shorter);
+						case  balance::RH: DelRightBalance(tree, shorter);
 					}
 			}
 			else if(item > tree->Value)
@@ -108,10 +108,10 @@ namespace DataStructures
 				if(shorter)
 					switch(tree->bf)
 					{
-						case LH: DelLeftBalance(tree, shorter);
+						case  balance::LH: DelLeftBalance(tree, shorter);
 							break;
-						case EH: tree->bf = LH; shorter = false; 							break;
-						case RH: tree->bf = EH; break;
+						case  balance::EH: tree->bf = balance::LH; shorter = false; 							break;
+						case  balance::RH: tree->bf = balance::EH; break;
 					}
 			}
 			else
@@ -134,22 +134,22 @@ namespace DataStructures
 
 		switch(ls->bf)
 		{
-			case LH:	tree->bf = ls->bf = EH;
+			case  balance::LH:	tree->bf = ls->bf =  balance::EH;
 				RotateRight(tree);
 				taller = false;
 				break;
-			case EH:	cerr << "Tree already balanced " << endl;
+			case  balance::EH:	cerr << "Tree already balanced " << endl;
 				break;
-			case RH:	rs = ls->rightTree;
+			case balance::RH:	rs = ls->rightTree;
 				switch(rs->bf)
 				{
-					case LH:	tree->bf = RH;
-						ls->bf = EH;		break;
-					case EH:	tree->bf = ls->bf = EH;	break;
-					case RH:	tree->bf = EH;
-						ls->bf = LH;		break;
+					case  balance::LH:	tree->bf = balance::RH;
+						ls->bf = balance::EH;		break;
+					case  balance::EH:	tree->bf = ls->bf = balance::EH;	break;
+					case  balance::RH:	tree->bf = balance::EH;
+						ls->bf = balance::LH;		break;
 				}
-				rs->bf = EH;
+				rs->bf = balance::EH;
 				RotateLeft(tree->leftTree);
 				RotateRight(tree);
 				taller = false;
@@ -182,9 +182,9 @@ namespace DataStructures
 			if(taller)
 				switch(tree->bf)
 				{
-					case LH: LeftBalance(tree, taller); break;
-					case EH: tree->bf = LH; break;
-					case RH: tree->bf = EH;
+					case  balance::LH: LeftBalance(tree, taller); break;
+					case  balance::EH: tree->bf = balance::LH; break;
+					case  balance::RH: tree->bf = balance::EH;
 						taller = false; break;
 				}
 		}
@@ -193,9 +193,9 @@ namespace DataStructures
 			if(taller)
 				switch(tree->bf)
 				{
-					case RH: RightBalance(tree, taller); break;
-					case EH: tree->bf = RH; break;
-					case LH: tree->bf = EH;
+					case  balance::RH: RightBalance(tree, taller); break;
+					case  balance::EH: tree->bf = balance::RH; break;
+					case  balance::LH: tree->bf = balance::EH;
 						taller = false; break;
 				}
 		}
@@ -208,28 +208,28 @@ namespace DataStructures
 
 		switch(rs->bf)
 		{
-			case RH:	tree->bf = rs->bf = EH;
+			case  balance::RH:	tree->bf = rs->bf = balance::EH;
 				RotateLeft(tree);
 				taller = false;
 				break;
 
-			case EH:	cerr << "Tree already balanced " << endl;
+			case  balance::EH:	cerr << "Tree already balanced " << endl;
 				break;
 
 
-			case LH:	ls = rs->leftTree;
+			case  balance::LH:	ls = rs->leftTree;
 				switch(ls->bf)
 				{
-					case RH:	tree->bf = LH;
-						rs->bf = EH;
+					case  balance::RH:	tree->bf = balance::LH;
+						rs->bf = balance::EH;
 						break;
-					case EH:	tree->bf = rs->bf = EH;
+					case  balance::EH:	tree->bf = rs->bf = balance::EH;
 						break;
-					case LH:	tree->bf = EH;
-						rs->bf = RH;
+					case  balance::LH:	tree->bf = balance::EH;
+						rs->bf = balance::RH;
 						break;
 				}
-				ls->bf = EH;
+				ls->bf = balance::EH;
 				RotateRight(tree->rightTree);
 				RotateLeft(tree);
 				taller = false;
@@ -306,10 +306,10 @@ namespace DataStructures
 			if(shorter)
 				switch(tree->bf)
 				{
-					case LH: tree->bf = EH; break;
-					case EH: tree->bf = RH; shorter = false;
+					case  balance::LH: tree->bf = balance::EH; break;
+					case  balance::EH: tree->bf = balance::RH; shorter = false;
 						break;
-					case RH: DelRightBalance(tree, shorter);
+					case  balance::RH: DelRightBalance(tree, shorter);
 				}
 		}
 	}
@@ -329,25 +329,25 @@ namespace DataStructures
 		AvlTreeNodeComponentB<T>* ls;
 		switch(rs->bf)
 		{
-			case RH:	tree->bf = rs->bf = EH;
+			case  balance::RH:	tree->bf = rs->bf = balance::EH;
 				RotateLeft(tree);
 				shorter = true; break;
-			case EH:	tree->bf = RH;
-				rs->bf = LH;
+			case  balance::EH:	tree->bf = balance::RH;
+				rs->bf = balance::LH;
 				RotateLeft(tree);
 				shorter = false; break;
-			case LH:	ls = rs->leftTree;
+			case  balance::LH:	ls = rs->leftTree;
 				switch(ls->bf)
 				{
-					case RH:	tree->bf = LH;
-						rs->bf = EH; break;
-					case EH:	tree->bf = rs->bf = EH;
+					case  balance::RH:	tree->bf = balance::LH;
+						rs->bf = balance::EH; break;
+					case  balance::EH:	tree->bf = rs->bf = balance::EH;
 						break;
-					case LH:	tree->bf = EH;
-						rs->bf = RH; break;
+					case  balance::LH:	tree->bf = balance::EH;
+						rs->bf = balance::RH; break;
 				} // END SWITCH
 
-				ls->bf = EH;
+				ls->bf = balance::EH;
 				RotateRight(tree->rightTree);
 				RotateLeft(tree);
 				shorter = true;
@@ -360,24 +360,24 @@ namespace DataStructures
 		AvlTreeNodeComponentB<T>* rs;
 		switch(ls->bf)
 		{
-			case LH:	tree->bf = ls->bf = EH;
+			case  balance::LH:	tree->bf = ls->bf = balance::EH;
 				RotateRight(tree);
 				shorter = true; break;
-			case EH:	tree->bf = LH;
-				ls->bf = RH;
+			case  balance::EH:	tree->bf = balance::LH;
+				ls->bf = balance::RH;
 				RotateRight(tree);
 				shorter = false; break;
-			case RH:	rs = ls->rightTree;
+			case  balance::RH:	rs = ls->rightTree;
 				switch(rs->bf)
 				{
-					case LH:	tree->bf = RH;
-						ls->bf = EH; break;
-					case EH:	tree->bf = ls->bf = EH;
+					case  balance::LH:	tree->bf = balance::RH;
+						ls->bf = balance::EH; break;
+					case  balance::EH:	tree->bf = ls->bf = balance::EH;
 						break;
-					case RH:	tree->bf = EH;
-						ls->bf = LH; break;
+					case  balance::RH:	tree->bf = balance::EH;
+						ls->bf = balance::LH; break;
 				} // END SWITCH
-				rs->bf = EH;
+				rs->bf = balance::EH;
 				RotateLeft(tree->leftTree);
 				RotateRight(tree);
 				shorter = true;

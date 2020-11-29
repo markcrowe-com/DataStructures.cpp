@@ -6,7 +6,7 @@
 namespace DataStructures
 {
 	using namespace std;
-	typedef enum { LH, EH, RH } balance;
+	enum class balance { LH, EH, RH };
 	template<class T> struct AvlTreeNodeComponentB : public AvlTreeNode<T>
 	{
 		AvlTreeNodeComponentB();
@@ -47,12 +47,12 @@ namespace DataStructures
 	};
 	template<class T> AvlTreeNodeComponentB<T>::AvlTreeNodeComponentB()
 	{
-		this->bf = EH;
+		this->bf = balance::EH;
 		this->leftTree = this->rightTree = NULL;
 	}
 	template<class T> AvlTreeNodeComponentB<T>::AvlTreeNodeComponentB(T value)
 	{
-		this->bf = EH;
+		this->bf = balance::EH;
 		this->leftTree = this->rightTree = NULL;
 		this->value = value;
 	}
