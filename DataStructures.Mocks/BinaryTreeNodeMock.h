@@ -27,12 +27,6 @@ namespace DataStructures
 		#pragma endregion
 		__declspec(property(get = getLeftTree, put = setLeftTree)) BinaryTreeNode<T>* LeftTree;
 		__declspec(property(get = getRightTree, put = setRightTree)) BinaryTreeNode<T>* RightTree;
-		#pragma region Fields
-		#pragma endregion
-	private:
-		BinaryTreeNode<T>* leftTree;
-		BinaryTreeNode<T>* rightTree;
-		T value;
 	};
 
 	template<class T> BinaryTreeNodeMock<T>::BinaryTreeNodeMock()
