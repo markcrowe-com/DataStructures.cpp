@@ -122,10 +122,7 @@ namespace DataStructures
 					}
 					else
 					{
-						AvlTreeNodeComponent<T>* treeRef = (AvlTreeNodeComponent<T>*)tree;
-						AvlTreeNodeComponent<T>* nodeToDeleteRef = (AvlTreeNodeComponent<T>*)nodeToDelete;
-
-						*treeRef = *nodeToDeleteRef; // Copy the contents of the non-empty child
+						*tree = *nodeToDelete; // Copy the contents of the non-empty child
 					}
 					delete nodeToDelete;
 				}
