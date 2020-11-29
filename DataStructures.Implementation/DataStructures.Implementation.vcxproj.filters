@@ -15,17 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryTreeNodeComponent.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="AvlTreeComponent.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AvlTreeNodeComponent.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AvlTreeComponent.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AvlTreeNodeMethods.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeNodeComponent.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
