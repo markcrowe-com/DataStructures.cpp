@@ -30,5 +30,8 @@
     <ClInclude Include="AvlTreeComponentB.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AvlTreeNodeComponentB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
