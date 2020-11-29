@@ -19,6 +19,11 @@ namespace DataStructures
 		#pragma region Methods : set
 		#pragma endregion
 		void setValue(T value);
+		#pragma region Methods
+		#pragma endregion
+		bool IsComplete() const;
+		bool IsLeaf() const;
+		bool IsNotComplete() const;
 		#pragma region Properties
 		#pragma endregion
 		__declspec(property(get = getLeftTree)) BinaryTreeNode<T>* LeftTree;
