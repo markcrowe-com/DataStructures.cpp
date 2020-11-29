@@ -3,18 +3,17 @@
  */
 #pragma once
 #include <string>
-#include "AvlTreeNode.h"
-#include "BinarySearchTree.h"
+#include "BinaryTreeNode.h"
 namespace DataStructures
 {
 	using namespace std;
-	template<class T> __interface AvlTree : public BinarySearchTree<T>
+	template<class T> __interface BinarySearchTree
 	{
 		void Clear();
 		bool Contains(T candidate) const;
 		void Insert(T value);
 		bool IsEmpty() const;
-		AvlTreeNode<T>* Nodes() const;
+		BinaryTreeNode<T>* Nodes() const;
 		bool Remove(T value);
 		string ToString() const;
 	};

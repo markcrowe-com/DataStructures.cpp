@@ -142,6 +142,7 @@
     <ClInclude Include="AvlBalanceFactor.h" />
     <ClInclude Include="AvlTree.h" />
     <ClInclude Include="AvlTreeNode.h" />
+    <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BinaryTreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
