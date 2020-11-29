@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AvlBalanceFactor.h" />
+    <ClInclude Include="AvlTree.h" />
     <ClInclude Include="AvlTreeNode.h" />
     <ClInclude Include="BinaryTreeNode.h" />
   </ItemGroup>

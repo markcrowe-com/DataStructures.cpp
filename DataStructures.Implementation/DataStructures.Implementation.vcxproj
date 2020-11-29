@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AvlTreeComponent.h" />
     <ClInclude Include="AvlTreeNodeComponent.h" />
+    <ClInclude Include="AvlTreeNodeMethods.h" />
     <ClInclude Include="BinaryTreeNodeComponent.h" />
   </ItemGroup>
   <ItemGroup>

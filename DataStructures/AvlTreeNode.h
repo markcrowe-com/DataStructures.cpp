@@ -21,6 +21,8 @@ namespace DataStructures
 		#pragma region Methods : set
 		#pragma endregion
 		void setHeight(int value);
+		void setLeftTree(AvlTreeNode<T>* value);
+		void setRightTree(AvlTreeNode<T>* value);
 		void setValue(T value);
 		#pragma region Methods
 		#pragma endregion
@@ -32,8 +34,8 @@ namespace DataStructures
 		#pragma region Properties
 		#pragma endregion
 		__declspec(property(get = getHeight, put = setHeight)) int Height;
-		__declspec(property(get = getLeftTree)) AvlTreeNode<T>* LeftTree;
-		__declspec(property(get = getRightTree)) AvlTreeNode<T>* RightTree;
+		__declspec(property(get = getLeftTree, put = setLeftTree)) AvlTreeNode<T>* LeftTree;
+		__declspec(property(get = getRightTree, put = setRightTree)) AvlTreeNode<T>* RightTree;
 		__declspec(property(get = getValue, put = setValue)) T Value;
 	};
 }
