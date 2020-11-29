@@ -122,7 +122,10 @@ namespace DataStructures
 					}
 					else
 					{
-						*tree = *nodeToDelete; // Copy the contents of the non-empty child
+						//*tree = *nodeToDelete; // Copy the contents of the non-empty child
+						tree->Value = nodeToDelete->Value; // Copy the contents of the non-empty child
+						tree->LeftTree = NULL;
+						tree->RightTree = NULL;
 					}
 					delete nodeToDelete;
 				}
