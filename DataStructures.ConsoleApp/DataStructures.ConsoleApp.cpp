@@ -4,11 +4,16 @@
 #include <iostream>
 #include "../DataStructures.Implementation/BinaryTreeNodeComponent.h"
 #include "../DataStructures.Implementation/AvlTreeNodeComponent.h"
+#include "../DataStructures.Mocks/BinaryTreeNodeMock.h"
+
+
 using namespace DataStructures;
 
 int main()
 {
 	BinaryTreeNode<int>* numbers = new BinaryTreeNodeComponent<int>(3);
+	BinaryTreeNode<int>* mock = new BinaryTreeNodeMock<int>(3);
+
 	AvlTreeNode<int>* avlNumbers = new AvlTreeNodeComponent<int>(3);
 
 	std::cout << "Hello World!\n";

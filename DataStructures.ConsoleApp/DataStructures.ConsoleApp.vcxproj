@@ -148,6 +148,9 @@
     <ProjectReference Include="..\DataStructures.Implementation\DataStructures.Implementation.vcxproj">
       <Project>{f42134d2-6f2f-481a-b440-f1b244f657f4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\DataStructures.Mocks\DataStructures.Mocks.vcxproj">
+      <Project>{77296b28-0a27-462b-901f-63c328c07617}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">
       <Project>{4df87373-3772-4e23-a691-ab1a5a0a1f6b}</Project>
     </ProjectReference>
