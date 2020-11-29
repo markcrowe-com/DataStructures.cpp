@@ -1,6 +1,8 @@
+/*
+ * Copyright (c) 2020 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
+ */
 #pragma once
 #include "../DataStructures/AvlTreeNode.h"
-
 namespace DataStructures
 {
 	template<class T> struct AvlTreeNodeComponent : public AvlTreeNode<T>

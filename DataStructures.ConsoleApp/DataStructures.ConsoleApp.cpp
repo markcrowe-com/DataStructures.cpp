@@ -1,5 +1,9 @@
-// DataStructures.ConsoleApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+ * Copyright (c) 2020 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
+ */
+
+ // DataStructures.ConsoleApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ //
 
 #include <iostream>
 #include "../DataStructures.Implementation/BinaryTreeNodeComponent.h"

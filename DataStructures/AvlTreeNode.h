@@ -1,6 +1,8 @@
+/*
+ * Copyright (c) 2020 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
+ */
 #pragma once
 #include "BinaryTreeNode.h"
-
 namespace DataStructures
 {
 	using namespace std;
