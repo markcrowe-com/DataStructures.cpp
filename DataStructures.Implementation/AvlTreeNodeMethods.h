@@ -13,6 +13,7 @@ namespace DataStructures
 
 	template<class T>AvlTreeNode<T>* BalanceTreeAfterDeletion(AvlTreeNode<T>*&);
 	template<class T>AvlTreeNode<T>* BalanceTreeAfterInsert(AvlTreeNode<T>*&, T&);
+	template<class T> int CalculateHeight(AvlTreeNode<T>*);
 	template<class T>bool ContainsValue(AvlTreeNode<T>*, T);
 	template<class T>AvlTreeNode<T>* DeleteNodeByValue(AvlTreeNode<T>*, T);
 	template<class T>AvlTreeNode<T>* GetLeftmostNode(AvlTreeNode<T>*);
@@ -81,6 +82,10 @@ namespace DataStructures
 			else return tree;
 		}
 		else return tree;
+	}
+	template<class T> int CalculateHeight(AvlTreeNode<T>* avlTreeNode)
+	{
+		return avlTreeNode == NULL ? 0 : avlTreeNode->Height;
 	}
 	template<class T>bool ContainsValue(AvlTreeNode<T>* tree, T value)
 	{

@@ -30,9 +30,6 @@ namespace DataStructures
 		bool IsLeaf() const;
 		bool IsNotComplete() const;
 		void UpdateHeight();
-		#pragma region Operators
-		#pragma endregion
-		AvlTreeNodeComponent<T>& operator =(const AvlTreeNodeComponent<T>&);
 		#pragma region Properties
 		#pragma endregion
 		__declspec(property(get = getHeight, put = setHeight)) int Height;
@@ -105,7 +102,7 @@ namespace DataStructures
 	#pragma endregion
 	template<class T> int AvlTreeNodeComponent<T>::CalculateHeightDifference() const
 	{
-		int heightDifference = calculateHeight(this->leftTree) - calculateHeight(this->rightTree);
+		int heightDifference = CalculateHeight(this->leftTree) - CalculateHeight(this->rightTree);
 		return heightDifference;
 	}
 	template<class T> bool AvlTreeNodeComponent<T>::IsComplete() const
@@ -120,22 +117,11 @@ namespace DataStructures
 	{
 		return this->leftTree == NULL || this->rightTree == NULL;
 	}
-	int getLargest(int lhs, int rhs)
-	{
-		return (lhs > rhs) ? lhs : rhs;
-	}
-	template<class T> int calculateHeight(AvlTreeNode<T>* avlTreeNode)
-	{
-		return avlTreeNode == NULL ? 0 : avlTreeNode->getHeight();
-	}
 	template<class T> void AvlTreeNodeComponent<T>::UpdateHeight()
 	{
-		int leftTreeHeight = calculateHeight(this->leftTree);
-		int rightTreeHeight = calculateHeight(this->rightTree);
-		this->height = 1 + getLargest(leftTreeHeight, rightTreeHeight);
-	}
-	template<class T> inline AvlTreeNodeComponent<T>& AvlTreeNodeComponent<T>::operator=(const AvlTreeNodeComponent<T>&)
-	{
-		return *this;
+		int leftTreeHeight = CalculateHeight(this->leftTree);
+		int rightTreeHeight = CalculateHeight(this->rightTree);
+		int largestSubTreeHeight = (leftTreeHeight > rightTreeHeight) ? leftTreeHeight : rightTreeHeight;
+		this->height = 1 + largestSubTreeHeight;
 	}
 }
