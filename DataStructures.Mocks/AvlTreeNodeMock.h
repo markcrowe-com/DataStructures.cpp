@@ -40,7 +40,6 @@ namespace DataStructures
 	template<class T> AvlTreeNodeMock<T>::AvlTreeNodeMock()
 	{
 		cerr << "AvlTreeNodeMock<T>::AvlTreeNodeMock()" << endl;
-
 	}
 	template<class T> AvlTreeNodeMock<T>::AvlTreeNodeMock(T value)
 	{
@@ -69,7 +68,8 @@ namespace DataStructures
 	}
 	template<class T> T AvlTreeNodeMock<T>::getValue() const
 	{
-		return this->value;
+		cerr << "AvlTreeNodeMock<T>::getValue()" << endl;
+		return NULL;
 	}
 	#pragma region Methods : set
 	#pragma endregion
@@ -81,7 +81,6 @@ namespace DataStructures
 	template<class T> void AvlTreeNodeMock<T>::setValue(T value)
 	{
 		cerr << "AvlTreeNodeMock<T>::setValue(T value)" << endl;
-
 	}
 	#pragma region Methods
 	#pragma endregion
