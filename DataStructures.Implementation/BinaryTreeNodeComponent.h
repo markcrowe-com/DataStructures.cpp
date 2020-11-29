@@ -18,6 +18,11 @@ namespace DataStructures
 		void setLeftTree(BinaryTreeNode<T>* value);
 		void setRightTree(BinaryTreeNode<T>* value);
 		void setValue(T value);
+		#pragma region Methods
+		#pragma endregion
+		bool IsComplete() const;
+		bool IsLeaf() const;
+		bool IsNotComplete() const;
 		#pragma region Properties
 		#pragma endregion
 		__declspec(property(get = getLeftTree, put = setLeftTree)) BinaryTreeNode<T>* LeftTree;
@@ -66,5 +71,19 @@ namespace DataStructures
 	template<class T> void BinaryTreeNodeComponent<T>::setValue(T value)
 	{
 		this->value = value;
+	}
+	#pragma region Methods
+	#pragma endregion
+	template<class T> bool BinaryTreeNodeComponent<T>::IsComplete() const
+	{
+		return this->leftTree != NULL && this->rightTree != NULL;
+	}
+	template<class T> bool BinaryTreeNodeComponent<T>::IsLeaf() const
+	{
+		return this->leftTree == NULL && this->rightTree == NULL;
+	}
+	template<class T> bool BinaryTreeNodeComponent<T>::IsNotComplete() const
+	{
+		return this->leftTree == NULL || this->rightTree == NULL;
 	}
 }
