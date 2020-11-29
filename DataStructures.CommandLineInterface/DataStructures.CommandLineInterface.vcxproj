@@ -143,6 +143,10 @@
       <Project>{4df87373-3772-4e23-a691-ab1a5a0a1f6b}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AvlTreeCommandApp.h" />
+    <ClInclude Include="TreeInorderPrinter.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
