@@ -27,5 +27,8 @@
     <ClInclude Include="BinaryTreeNodeComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AvlTreeComponentB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AvlTreeComponent.h" />
+    <ClInclude Include="AvlTreeComponentB.h" />
     <ClInclude Include="AvlTreeNodeComponent.h" />
     <ClInclude Include="AvlTreeNodeMethods.h" />
     <ClInclude Include="BinaryTreeNodeComponent.h" />
