@@ -6,28 +6,16 @@
  //
 
 #include <iostream>
-#include "../DataStructures.Implementation/BinaryTreeNodeComponent.h"
-#include "../DataStructures.Implementation/AvlTreeNodeComponent.h"
-#include "../DataStructures.Mocks/BinaryTreeNodeMock.h"
-
-
+#include "../DataStructures.Implementation/AvlTreeComponent.h"
+#include "../DataStructures.CommandLineInterface/AvlTreeCommandApp.h"
 using namespace DataStructures;
-
 int main()
 {
-	BinaryTreeNode<int>* numbers = new BinaryTreeNodeComponent<int>(3);
-	BinaryTreeNode<int>* mock = new BinaryTreeNodeMock<int>(3);
-
-	AvlTreeNode<int>* avlNumbers = new AvlTreeNodeComponent<int>(3);
-
-	std::cout << "Hello World!\n";
-	std::cout << numbers->Value << endl;
-	std::cout << avlNumbers->Value << endl;
-	std::cout << avlNumbers->Height << endl;
-
-
+	AvlTreeCommandApp avlTreeCommandApp;
+	avlTreeCommandApp.TestAvlTree = new AvlTreeComponent<string>();
+	avlTreeCommandApp.Run();
+	return 0;
 }
-
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 
