@@ -145,6 +145,9 @@
     <ClInclude Include="AvlTreeNodeComponentB.h" />
     <ClInclude Include="AvlTreeNodeMethods.h" />
     <ClInclude Include="BinaryTreeNodeComponent.h" />
+    <ClInclude Include="TrieTreeComponentD.h" />
+    <ClInclude Include="TrieTreeEntry.h" />
+    <ClInclude Include="TrieTreeNodeComponentD.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">
