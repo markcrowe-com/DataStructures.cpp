@@ -9,18 +9,15 @@ namespace DataStructures
 	const int LETTERS = 26;
 	struct Trienode
 	{
+		Trienode();
 		Trienode* branch[LETTERS];
 		EntryType* ref;
 	};
-	Trienode* CreateNode()
+	Trienode::Trienode()
 	{
 		int ch;
-		Trienode* newnode = new Trienode;
 		for(ch = 0; ch < LETTERS; ch++)
-			newnode->branch[ch] = NULL;
-
-		newnode->ref = NULL;
-
-		return newnode;
+			branch[ch] = NULL;
+		ref = NULL;
 	}
 }
