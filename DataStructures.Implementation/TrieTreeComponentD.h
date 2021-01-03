@@ -26,29 +26,28 @@ namespace DataStructures
 	};
 	EntryType* TrieType::TrieSearch(Key target)
 	{
-		int i;
 		Trienode* current = root;
-		for(i = 0; i < MAXLENGTH && current; i++)
+		for(int i = 0; i < MAXLENGTH && current; i++)
+		{
 			if(target[i] == '\0')
 				break;
 			else
 				current = current->branch[target[i] - 'a'];
+		}
 		if(!current)
 			return NULL;
-		else
-			if(!current->ref)
-				return NULL;
+		else if(!current->ref)
+			return NULL;
 
 		return current->ref;
 	}
 	void TrieType::InsertTrie(Key newkey, EntryType* newentry)
 	{
-		int i;
-		Trienode* current;
 		if(!root)
 			root = new Trienode();
-		current = root;
-		for(i = 0; i < MAXLENGTH; i++)
+		Trienode* current = root;
+		for(int i = 0; i < MAXLENGTH; i++)
+		{
 			if(newkey[i] == '\0')
 				break;
 			else
@@ -57,6 +56,7 @@ namespace DataStructures
 					current->branch[newkey[i] - 'a'] = new Trienode();
 				current = current->branch[newkey[i] - 'a'];
 			}
+		}
 		if(current->ref != NULL)
 			cout << "\nTried to insert a duplicate key." << endl;
 		else
