@@ -12,4 +12,15 @@ namespace DataStructures
 		Trienode* branch[LETTERS];
 		EntryType* ref;
 	};
+	Trienode* CreateNode()
+	{
+		int ch;
+		Trienode* newnode = new Trienode;
+		for(ch = 0; ch < LETTERS; ch++)
+			newnode->branch[ch] = NULL;
+
+		newnode->ref = NULL;
+
+		return newnode;
+	}
 }

@@ -8,9 +8,7 @@
 namespace DataStructures
 {
 	using namespace std;
-
 	typedef char Key[MAXLENGTH];
-
 	class TrieType
 	{
 	public:
@@ -42,17 +40,6 @@ namespace DataStructures
 				return NULL;
 
 		return current->ref;
-	}
-	Trienode* CreateNode()
-	{
-		int ch;
-		Trienode* newnode = new Trienode;
-		for(ch = 0; ch < LETTERS; ch++)
-			newnode->branch[ch] = NULL;
-
-		newnode->ref = NULL;
-
-		return newnode;
 	}
 	void TrieType::InsertTrie(Key newkey, EntryType* newentry)
 	{
