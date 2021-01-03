@@ -10,6 +10,7 @@ namespace DataStructures
 	struct Trienode
 	{
 		Trienode();
+		bool IsLeaf();
 		Trienode* branch[LETTERS];
 		EntryType* ref;
 	};
@@ -19,5 +20,14 @@ namespace DataStructures
 		for(ch = 0; ch < LETTERS; ch++)
 			branch[ch] = NULL;
 		ref = NULL;
+	}
+	bool Trienode::IsLeaf()
+	{
+		for(int index = 0; index < LETTERS; index++)
+		{
+			if(branch[index] != NULL)
+				return false;
+		}
+		return true;
 	}
 }
