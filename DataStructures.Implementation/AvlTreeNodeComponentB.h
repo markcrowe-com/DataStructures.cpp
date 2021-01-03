@@ -2,7 +2,6 @@
 #include <iostream>
 #include "../DataStructures/AvlTreeNode.h"
 #include "../DataStructures/AvlBalanceFactor.h"
-
 namespace DataStructures
 {
 	using namespace std;

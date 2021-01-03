@@ -7,12 +7,14 @@
 
 #include <iostream>
 #include "../DataStructures.Implementation/AvlTreeComponent.h"
+#include "../DataStructures.Implementation/AvlTreeComponentB.h"
+
 #include "../DataStructures.CommandLineInterface/AvlTreeCommandApp.h"
 using namespace DataStructures;
 int main()
 {
 	AvlTreeCommandApp avlTreeCommandApp;
-	avlTreeCommandApp.TestAvlTree = new AvlTreeComponent<string>();
+	avlTreeCommandApp.TestAvlTree = new AvlTreeComponentB<string>();
 	avlTreeCommandApp.Run();
 	return 0;
 }
