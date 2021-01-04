@@ -5,6 +5,7 @@
 #include <iostream>
 #include "TrieTreeEntry.h"
 #include "TrieTreeNodeComponentD.h"
+#include <stack>
 namespace DataStructures
 {
 	using namespace std;
@@ -24,6 +25,10 @@ namespace DataStructures
 	private:
 		Trienode* root;
 	};
+	TrieType::TrieType()
+	{
+		root = NULL;
+	}
 	EntryType* TrieType::TrieSearch(Key target)
 	{
 		Trienode* current = root;
@@ -40,6 +45,32 @@ namespace DataStructures
 			return NULL;
 
 		return current->ref;
+	}
+	bool TrieType::DeleteTrie(Key target)
+	{
+		Trienode* iterator = root;
+		stack<Trienode*> s;
+		for(int i = 0; i < MAXLENGTH && iterator; i++)
+		{
+			if(target[i] == '\0')
+				break;
+			else
+			{
+				iterator = iterator->branch[target[i] - 'a'];
+				s.push(iterator);
+			}
+		}
+		if(!iterator) {
+			return false;
+		}
+		else {
+			iterator->ref = NULL;
+			RemoveEmptyTries(iterator);
+		}
+		return true;
+	}
+	void RemoveEmptyTries(Trienode* iterator)
+	{
 	}
 	void TrieType::InsertTrie(Key newkey, EntryType* newentry)
 	{
