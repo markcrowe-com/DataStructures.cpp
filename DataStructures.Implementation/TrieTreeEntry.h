@@ -21,4 +21,10 @@ namespace DataStructures
 	private:
 		char entryKey[MAXLENGTH];
 	};
+	struct Person
+	{
+		string firstname;
+		string surname;
+		int age;
+	};
 }
