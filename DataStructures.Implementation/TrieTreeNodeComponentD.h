@@ -11,6 +11,7 @@ namespace DataStructures
 	{
 		Trienode();
 		bool IsLeaf();
+		bool IsEmpty();
 		Trienode* branch[LETTERS];
 		EntryType* ref;
 	};
@@ -29,5 +30,9 @@ namespace DataStructures
 				return false;
 		}
 		return true;
+	}
+	bool Trienode::IsEmpty()
+	{
+		return ref == NULL && IsLeaf();
 	}
 }
