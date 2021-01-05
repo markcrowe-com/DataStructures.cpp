@@ -15,8 +15,6 @@ namespace DataStructures
 	public:
 		TrieType();
 		~TrieType();
-		TrieType(TrieType& originalTree);
-		void operator=(TrieType& originalTree);
 		void MakeEmpty();
 		void InsertTrie(Key newkey, EntryType* newentry);
 		EntryType* TrieSearch(Key target);
@@ -26,6 +24,10 @@ namespace DataStructures
 		Trienode* root;
 	};
 	TrieType::TrieType()
+	{
+		root = NULL;
+	}
+	TrieType::~TrieType()
 	{
 		root = NULL;
 	}
@@ -48,8 +50,14 @@ namespace DataStructures
 	}
 	bool TrieType::DeleteTrie(Key target)
 	{
+		if(root == NULL)
+			return false;
+
 		Trienode* iterator = root;
-		stack<Trienode*> s;
+
+		stack<Trienode*>* targetPathStack = new stack<Trienode*>();
+		targetPathStack->push(iterator);
+
 		for(int i = 0; i < MAXLENGTH && iterator; i++)
 		{
 			if(target[i] == '\0')
@@ -57,20 +65,41 @@ namespace DataStructures
 			else
 			{
 				iterator = iterator->branch[target[i] - 'a'];
-				s.push(iterator);
+				targetPathStack->push(iterator);
 			}
 		}
-		if(!iterator) {
+		if(iterator == NULL) {
 			return false;
 		}
 		else {
 			iterator->ref = NULL;
-			RemoveEmptyTries(iterator);
+			deleteEmptyNodes(targetPathStack);
+			return true;
 		}
-		return true;
 	}
-	void RemoveEmptyTries(Trienode* iterator)
+	void TrieType::PrintTrie(ostream& outfile) const
 	{
+		cout << "Demo Print";
+	}
+	void deleteEmptyNodes(stack<Trienode*>* targetPathStack)
+	{
+		while(!targetPathStack->empty())
+		{
+			Trienode* node = targetPathStack->top();
+			targetPathStack->pop();
+			if(node->IsEmpty())
+			{
+				delete node;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+	void TrieType::MakeEmpty()
+	{
+		root = NULL;
 	}
 	void TrieType::InsertTrie(Key newkey, EntryType* newentry)
 	{
