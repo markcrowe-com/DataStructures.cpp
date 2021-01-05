@@ -14,13 +14,19 @@ namespace DataStructures
 		EntryType();
 		EntryType(char* key);
 		EntryType(EntryType& entry);
-		friend istream& operator>> (istream& is, EntryType& item);
-		friend ostream& operator<< (ostream& os, EntryType item);
-		bool operator== (const EntryType& item) const;
-		bool operator!= (const EntryType& item) const;
 	private:
 		char entryKey[MAXLENGTH];
 	};
+	EntryType::EntryType()
+	{
+	}
+	EntryType::EntryType(char* key)
+	{
+	}
+	EntryType::EntryType(EntryType& entry)
+	{
+		//entryKey = entry.entryKey;
+	}
 	struct Person
 	{
 		string firstname;
