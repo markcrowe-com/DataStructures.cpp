@@ -69,16 +69,16 @@ namespace DataStructures
 		int row;
 		int column;
 		row = IndexIs(vertices, fromVertex);
-		col = IndexIs(vertices, toVertex);
-		edges[row][col] = weight;
+		column = IndexIs(vertices, toVertex);
+		edges[row][column] = weight;
 	}
 	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType fromVertex, VertexType toVertex)
 	{
 		int row;
 		int column;
 		row = IndexIs(vertices, fromVertex);
-		col = IndexIs(vertices, toVertex);
-		return edges[row][col];
+		column = IndexIs(vertices, toVertex);
+		return edges[row][column];
 	}
 	template<class VertexType>int IndexIs(VertexType* vertices, VertexType vertex)
 	{
