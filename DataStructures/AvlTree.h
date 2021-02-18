@@ -8,6 +8,10 @@
 namespace DataStructures
 {
 	using namespace std;
+	/// <summary>
+	/// AVL Tree
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	template<class T> __interface AvlTree : public BinarySearchTree<T>
 	{
 		void Clear();

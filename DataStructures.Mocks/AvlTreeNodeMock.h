@@ -6,12 +6,17 @@
 #include "../DataStructures/AvlTreeNode.h"
 namespace DataStructures
 {
+	/// <summary>
+	/// Mock AVL Tree
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	template<class T> struct AvlTreeNodeMock : public AvlTreeNode<T>
 	{
 	public:
 		AvlTreeNodeMock();
 		AvlTreeNodeMock(int, T);
 		AvlTreeNodeMock(T);
+		~AvlTreeNodeMock();
 		#pragma region Methods : get const
 		#pragma endregion
 		int getHeight() const;
@@ -48,6 +53,10 @@ namespace DataStructures
 	template<class T> AvlTreeNodeMock<T>::AvlTreeNodeMock(int height, T value)
 	{
 		cerr << "AvlTreeNodeMock<T>::AvlTreeNodeMock(int height, T value)" << endl;
+	}
+	template<class T> AvlTreeNodeMock<T>::~AvlTreeNodeMock()
+	{
+		cerr << "AvlTreeNodeMock<T>::~AvlTreeNodeMock()" << endl;
 	}
 	#pragma region Methods : get const
 	#pragma endregion
