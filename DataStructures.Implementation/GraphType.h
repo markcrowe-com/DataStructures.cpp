@@ -66,28 +66,17 @@ namespace DataStructures
 	}
 	template<class VertexType>void GraphType<VertexType>::AddEdge(VertexType fromVertex, VertexType toVertex, int weight)
 	{
-		int row;
-		int column;
-		row = IndexIs(vertices, fromVertex);
-		column = IndexIs(vertices, toVertex);
+		int row = IndexIs(vertices, fromVertex);
+		int column = IndexIs(vertices, toVertex);
 		edges[row][column] = weight;
 	}
 	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType fromVertex, VertexType toVertex)
 	{
-		int row;
-		int column;
-		row = IndexIs(vertices, fromVertex);
-		column = IndexIs(vertices, toVertex);
+		int row = IndexIs(vertices, fromVertex);
+		int column = IndexIs(vertices, toVertex);
 		return edges[row][column];
 	}
-	template<class VertexType>int IndexIs(VertexType* vertices, VertexType vertex)
-	{
-		int index = 0;
-		while(!(vertex == vertices[index]))
-			index++;
-		return index;
-	}
-	template<class VertexType>int IndexIs(VertexType* vertices, VertexType vertex)
+	template<class VertexType>int IndexOf(VertexType* vertices, VertexType vertex)
 	{
 		int index = 0;
 		while(!(vertex == vertices[index]))
