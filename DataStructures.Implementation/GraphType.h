@@ -66,14 +66,14 @@ namespace DataStructures
 	}
 	template<class VertexType>void GraphType<VertexType>::AddEdge(VertexType fromVertex, VertexType toVertex, int weight)
 	{
-		int row = IndexIs(vertices, fromVertex);
-		int column = IndexIs(vertices, toVertex);
+		int row = IndexOf(vertices, fromVertex);
+		int column = IndexOf(vertices, toVertex);
 		edges[row][column] = weight;
 	}
 	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType fromVertex, VertexType toVertex)
 	{
-		int row = IndexIs(vertices, fromVertex);
-		int column = IndexIs(vertices, toVertex);
+		int row = IndexOf(vertices, fromVertex);
+		int column = IndexOf(vertices, toVertex);
 		return edges[row][column];
 	}
 	template<class VertexType>int IndexOf(VertexType* vertices, VertexType vertex)
@@ -85,7 +85,7 @@ namespace DataStructures
 	}
 	template<class VertexType>void GraphType<VertexType>::GetToVertices(VertexType vertex, queue<VertexType>& adjvertexQ)
 	{
-		int fromIndex = IndexIs(vertices, vertex);
+		int fromIndex = IndexOf(vertices, vertex);
 		for(int toIndex = 0; toIndex < numVertices; toIndex++)
 			if(edges[fromIndex][toIndex] != NULL_EDGE)
 				adjvertexQ.Enqueue(vertices[toIndex]);
