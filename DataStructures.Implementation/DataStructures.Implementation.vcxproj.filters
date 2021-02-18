@@ -48,7 +48,7 @@
     <ClInclude Include="PrefixTreeNodeComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WeightedGraphB.h">
+    <ClInclude Include="GraphType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

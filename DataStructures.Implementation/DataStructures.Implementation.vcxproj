@@ -150,7 +150,7 @@
     <ClInclude Include="TrieTreeComponentD.h" />
     <ClInclude Include="TrieTreeEntry.h" />
     <ClInclude Include="TrieTreeNodeComponentD.h" />
-    <ClInclude Include="WeightedGraphB.h" />
+    <ClInclude Include="GraphType.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">
