@@ -4,6 +4,7 @@
  */
 #include <string>
 #include "../DataStructures/BinarySearchTree.h"
+#include "../DataStructures.Implementation/AvlTreeNodeMethods.h"
 namespace DataStructures
 {
 	using namespace std;

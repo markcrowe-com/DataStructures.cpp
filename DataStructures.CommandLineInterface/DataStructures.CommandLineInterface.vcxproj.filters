@@ -21,5 +21,8 @@
     <ClInclude Include="TreeInorderPrinter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PrefixTreeCommandApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

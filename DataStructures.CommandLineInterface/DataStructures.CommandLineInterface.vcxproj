@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AvlTreeCommandApp.h" />
+    <ClInclude Include="PrefixTreeCommandApp.h" />
     <ClInclude Include="TreeInorderPrinter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
