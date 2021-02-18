@@ -36,9 +36,15 @@ namespace DataStructures
 		__declspec(property(get = getLeftTree, put = setLeftTree)) AvlTreeNode<T>* LeftTree;
 		__declspec(property(get = getRightTree, put = setRightTree)) AvlTreeNode<T>* RightTree;
 		__declspec(property(get = getValue, put = setValue)) T Value;
+		//__declspec(property(get = getBalanceFactor, put = setBalanceFactor)) balance BalanceFactor;
+
 		#pragma region Fields
 		#pragma endregion
-		balance bf;
+		balance bf;//balanceFactor
+		#pragma region Methods : get const
+		#pragma endregion
+		balance getBalanceFactor() const;
+		void setBalanceFactor(balance value);
 		AvlTreeNodeComponentB<T>* leftTree;
 		AvlTreeNodeComponentB<T>* rightTree;
 	private:
@@ -118,5 +124,17 @@ namespace DataStructures
 	template<class T> void AvlTreeNodeComponentB<T>::UpdateHeight()
 	{
 		cerr << "AvlTreeNodeComponentB<T>::UpdateHeight()" << endl;
+	}
+	#pragma region Methods : get const
+	#pragma endregion
+	template<class T> balance AvlTreeNodeComponentB<T>::getBalanceFactor() const
+	{
+		return this->bf;
+	}
+	#pragma region Methods : set
+	#pragma endregion
+	template<class T> void AvlTreeNodeComponentB<T>::setBalanceFactor(balance value)
+	{
+		this->bf = value;
 	}
 }
