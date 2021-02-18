@@ -1,21 +1,26 @@
 /*
  * Copyright (c) 2020 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
  */
-
+ //
  // DataStructures.ConsoleApp.cpp : This file contains the 'main' function. Program execution begins and ends there.
  //
-
 #include <iostream>
+#include "../DataStructures.CommandLineInterface/AvlTreeCommandApp.h"
+#include "../DataStructures.CommandLineInterface/PrefixTreeCommandApp.h"
 #include "../DataStructures.Implementation/AvlTreeComponent.h"
 #include "../DataStructures.Implementation/AvlTreeComponentB.h"
+#include "../DataStructures.Mocks/PrefixTreeMock.h"
 
-#include "../DataStructures.CommandLineInterface/AvlTreeCommandApp.h"
 using namespace DataStructures;
 int main()
 {
-	AvlTreeCommandApp avlTreeCommandApp;
-	avlTreeCommandApp.TestAvlTree = new AvlTreeComponentB<string>();
-	avlTreeCommandApp.Run();
+	//AvlTreeCommandApp avlTreeCommandApp;
+	//avlTreeCommandApp.TestAvlTree = new AvlTreeComponentB<string>();
+	//avlTreeCommandApp.Run();
+
+	PrefixTreeCommandApp prefixTreeCommandApp;
+	prefixTreeCommandApp.TestPrefixTree = new PrefixTreeMock<string>();
+	prefixTreeCommandApp.Run();
 	return 0;
 }
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

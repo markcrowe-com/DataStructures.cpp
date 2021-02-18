@@ -145,9 +145,12 @@
     <ClInclude Include="AvlTreeNodeComponentB.h" />
     <ClInclude Include="AvlTreeNodeMethods.h" />
     <ClInclude Include="BinaryTreeNodeComponent.h" />
+    <ClInclude Include="PrefixTreeComponent.h" />
+    <ClInclude Include="PrefixTreeNodeComponent.h" />
     <ClInclude Include="TrieTreeComponentD.h" />
     <ClInclude Include="TrieTreeEntry.h" />
     <ClInclude Include="TrieTreeNodeComponentD.h" />
+    <ClInclude Include="WeightedGraphB.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">

@@ -139,8 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AvlTreeMock.h" />
     <ClInclude Include="AvlTreeNodeMock.h" />
     <ClInclude Include="BinaryTreeNodeMock.h" />
+    <ClInclude Include="PrefixTreeMock.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataStructures\DataStructures.vcxproj">
