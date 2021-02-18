@@ -51,5 +51,8 @@
     <ClInclude Include="GraphType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GraphType.Methods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

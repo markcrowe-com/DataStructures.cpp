@@ -1,9 +1,12 @@
 #pragma once
+/*
+ * Copyright (c) 2021 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
+ */
 #include <queue>
 using namespace std;
-
 namespace DataStructures
 {
+	int NULL_EDGE = 0;
 	using namespace std;
 	/// <summary>
 	/// </summary>
@@ -14,45 +17,49 @@ namespace DataStructures
 		GraphType();// constructor, default of 50 vertices.
 		GraphType(int maxV);// parameterized constructor, maxV <= 50.
 		~GraphType();
-
-		void MakeEmpty();
-		void ClearMarks();
-
+		#pragma region Methods : get status
+		#pragma endregion
 		bool IsEmpty() const;
 		bool IsFull() const;
 		bool IsMarked(VertexType) const;
-		int WeightIs(VertexType, VertexType);
-
-		void AddVertex(VertexType);
+		#pragma region Methods : get
+		#pragma endregion
+		int WeightIs(VertexType, VertexType) const;
+		#pragma region Methods
+		#pragma endregion
 		void AddEdge(VertexType, VertexType, int);
-		void MarkVertex(VertexType);
-
+		void AddVertex(VertexType);
+		void Clear();
+		void ClearMarks();
 		void GetToVertices(VertexType, queue<VertexType>&);
+		void MarkVertex(VertexType);
 	private:
-		int numVertices;
-		int maxVertices;
-		VertexType* vertices;
+		int IndexOf(VertexType vertex);
+	private:
 		int edges[50][50];
 		bool* marks;
+		int maxVertices;
+		int numVertices;
+		VertexType* vertices;
 	};
 	template<class VertexType>GraphType<VertexType>::GraphType()
 	{
-		numVertices = 0;
-		maxVertices = 50;
-		vertices = new VertexType[50];
-		marks = new bool[50];
+		this->marks = new bool[50];
+		this->maxVertices = 50;
+		this->numVertices = 0;
+		this->vertices = new VertexType[50];
 	}
 	template<class VertexType>GraphType<VertexType>::GraphType(int maxV)
 	{
-		numVertices = 0;
-		maxVertices = maxV;
-		vertices = new VertexType[maxV];
-		marks = new bool[maxV];
+		this->marks = new bool[maxV];
+		this->maxVertices = maxV;
+		this->numVertices = 0;
+		this->vertices = new VertexType[maxV];
 	}
 	template<class VertexType>GraphType<VertexType>::~GraphType()
 	{
-		delete[] vertices;
 		delete[] marks;
+		delete[] vertices;
 	}
 	template<class VertexType>void GraphType<VertexType>::AddVertex(VertexType vertex)
 	{
@@ -66,28 +73,32 @@ namespace DataStructures
 	}
 	template<class VertexType>void GraphType<VertexType>::AddEdge(VertexType fromVertex, VertexType toVertex, int weight)
 	{
-		int row = IndexOf(vertices, fromVertex);
-		int column = IndexOf(vertices, toVertex);
+		int row = IndexOf(fromVertex);
+		int column = IndexOf(toVertex);
 		edges[row][column] = weight;
 	}
-	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType fromVertex, VertexType toVertex)
+	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType sourceVertex, VertexType targetVertex) const
 	{
-		int row = IndexOf(vertices, fromVertex);
-		int column = IndexOf(vertices, toVertex);
+		int row = IndexOf(sourceVertex);
+		int column = IndexOf(targetVertex);
 		return edges[row][column];
 	}
-	template<class VertexType>int IndexOf(VertexType* vertices, VertexType vertex)
+	template<class VertexType>int IndexOf(VertexType vertex)
 	{
-		int index = 0;
-		while(!(vertex == vertices[index]))
-			index++;
-		return index;
+		for(int index = 0; index < this.numVertices; index++)
+		{
+			if(vertex == vertices[index])
+				return index;
+		}
+		return -1;
 	}
 	template<class VertexType>void GraphType<VertexType>::GetToVertices(VertexType vertex, queue<VertexType>& adjvertexQ)
 	{
-		int fromIndex = IndexOf(vertices, vertex);
+		int fromIndex = IndexOf(vertex);
 		for(int toIndex = 0; toIndex < numVertices; toIndex++)
+		{
 			if(edges[fromIndex][toIndex] != NULL_EDGE)
 				adjvertexQ.Enqueue(vertices[toIndex]);
+		}
 	}
 }
