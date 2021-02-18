@@ -3,9 +3,9 @@
  */
 #pragma once
 #include <iostream>
+#include <stack>
 #include "TrieTreeEntry.h"
 #include "TrieTreeNodeComponentD.h"
-#include <stack>
 namespace DataStructures
 {
 	using namespace std;
@@ -101,20 +101,20 @@ namespace DataStructures
 	{
 		root = NULL;
 	}
-	void TrieType::InsertTrie(Key newkey, EntryType* newentry)
+	void TrieType::InsertTrie(Key key, EntryType* newentry)
 	{
 		if(!root)
 			root = new Trienode();
 		Trienode* current = root;
-		for(int i = 0; i < MAXLENGTH; i++)
+		for(int index = 0; index < MAXLENGTH; index++)
 		{
-			if(newkey[i] == '\0')
+			if(key[index] == '\0')
 				break;
 			else
 			{
-				if(!current->branch[newkey[i] - 'a'])
-					current->branch[newkey[i] - 'a'] = new Trienode();
-				current = current->branch[newkey[i] - 'a'];
+				if(!current->branch[key[index] - 'a'])
+					current->branch[key[index] - 'a'] = new Trienode();
+				current = current->branch[key[index] - 'a'];
 			}
 		}
 		if(current->ref != NULL)
