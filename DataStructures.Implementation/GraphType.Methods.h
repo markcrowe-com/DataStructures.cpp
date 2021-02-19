@@ -8,12 +8,19 @@ namespace DataStructures
 {
 	using namespace std;
 	template<class VertexType>
-	struct ItemType
+	struct PathManager
 	{
+	public:
+		PathManager(VertexType fromVertex, VertexType toVertex)
+		{
+			this->fromVertex = fromVertex;
+			this->toVertex = toVertex;
+			this->distance = 0;
+		}
 		// < means greater distance
-		//bool operator<(ItemType otherItem);
-		//bool operator==(ItemType otherItem);
-		//bool operator<=(ItemType otherItem);
+		//bool operator<(PathManager otherItem);
+		//bool operator==(PathManager otherItem);
+		//bool operator<=(PathManager otherItem);
 		//
 		//	Fields
 		//
@@ -24,43 +31,45 @@ namespace DataStructures
 
 	template<class VertexType>void ShortestPath(GraphType<VertexType> graph, VertexType startVertex)
 	{
-		ItemType item;
 		int minDistance;
-		priority_queue<ItemType> priorityQueue;// = (10);
+		priority_queue<PathManager> priorityQueue;// = (10);
 		queue<VertexType> vertexQ;
 		int count = 0;
 
 		graph.ClearMarks();
-		item.fromVertex = startVertex;
-		item.toVertex = startVertex;
-		item.distance = 0;
-		priorityQueue.push(item);//.Enqueue
+
+		PathManager<VertexType> pathManager = new PathManager<VertexType>(startVertex, startVertex);
+
+		priorityQueue.push(pathManager);//.Enqueue
+
 		cout << “Last Vertex Destination Distance” << endl;
 		cout << “------------------------------------------ - ” << endl;
 
 		do
 		{
-			item = priorityQueue.pop(); //.Dequeue(item);
-			if(!graph.IsMarked(item.toVertex))
+			pathManager = priorityQueue.pop(); //.Dequeue(pathManager);
+			if(!graph.IsMarked(pathManager.toVertex))
 			{
-				graph.MarkVertex(item.toVertex);
-				cout << item.fromVertex;
+				graph.MarkVertex(pathManager.toVertex);
+
+				cout << pathManager.fromVertex;
 				cout << " ";
-				cout << item.toVertex;
-				cout << " " << item.distance << endl;
-				item.fromVertex = item.toVertex;
-				minDistance = item.distance;
-				graph.GetToVertices(item.fromVertex, vertexQ);
+				cout << pathManager.toVertex;
+				cout << " " << pathManager.distance << endl;
+
+				pathManager.fromVertex = pathManager.toVertex;
+				minDistance = pathManager.distance;
+				graph.GetToVertices(pathManager.fromVertex, vertexQ);
 
 				while(!vertexQ.IsEmpty()) {
 					VertexType vertex;
 					vertexQ.Dequeue(vertex);
 					if(!graph.IsMarked(vertex))
 					{
-						item.toVertex = vertex;
-						item.distance = minDistance +
-							graph.WeightIs(item.fromVertex, vertex);
-						priorityQueue.push(item);// Enqueue(item);
+						pathManager.toVertex = vertex;
+						pathManager.distance = minDistance +
+							graph.WeightIs(pathManager.fromVertex, vertex);
+						priorityQueue.push(pathManager);// Enqueue(pathManager);
 					}
 				}
 			}
