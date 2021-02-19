@@ -10,10 +10,13 @@ namespace DataStructures
 	template<class VertexType>
 	struct ItemType
 	{
-		bool operator<(ItemType otherItem);
 		// < means greater distance
-		bool operator==(ItemType otherItem);
-		bool operator<=(ItemType otherItem);
+		//bool operator<(ItemType otherItem);
+		//bool operator==(ItemType otherItem);
+		//bool operator<=(ItemType otherItem);
+		//
+		//	Fields
+		//
 		VertexType fromVertex;
 		VertexType toVertex;
 		int distance;
@@ -23,22 +26,21 @@ namespace DataStructures
 	{
 		ItemType item;
 		int minDistance;
-		PQType<ItemType> pq(10); 	// Assume at most 10 vertices
+		priority_queue<ItemType> priorityQueue;// = (10);
 		queue<VertexType> vertexQ;
-		VertexType vertex;
 		int count = 0;
 
 		graph.ClearMarks();
 		item.fromVertex = startVertex;
 		item.toVertex = startVertex;
 		item.distance = 0;
-		pq.Enqueue(item);
+		priorityQueue.push(item);//.Enqueue
 		cout << “Last Vertex Destination Distance” << endl;
 		cout << “------------------------------------------ - ” << endl;
 
 		do
 		{
-			pq.Dequeue(item);
+			item = priorityQueue.pop(); //.Dequeue(item);
 			if(!graph.IsMarked(item.toVertex))
 			{
 				graph.MarkVertex(item.toVertex);
@@ -51,16 +53,17 @@ namespace DataStructures
 				graph.GetToVertices(item.fromVertex, vertexQ);
 
 				while(!vertexQ.IsEmpty()) {
+					VertexType vertex;
 					vertexQ.Dequeue(vertex);
 					if(!graph.IsMarked(vertex))
 					{
 						item.toVertex = vertex;
 						item.distance = minDistance +
 							graph.WeightIs(item.fromVertex, vertex);
-						pq.Enqueue(item);
+						priorityQueue.push(item);// Enqueue(item);
 					}
 				}
 			}
-		} while(!pq.IsEmpty());
+		} while(!priorityQueue.empty());// .IsEmpty());
 	}
 }
