@@ -17,6 +17,14 @@ namespace DataStructures
 			this->toVertex = toVertex;
 			this->distance = 0;
 		}
+
+		void PrintLine()
+		{
+			cout << fromVertex;
+			cout << " ";
+			cout << toVertex;
+			cout << " " << distance << endl;
+		}
 		// < means greater distance
 		//bool operator<(PathManager otherItem);
 		//bool operator==(PathManager otherItem);
@@ -31,19 +39,19 @@ namespace DataStructures
 
 	template<class VertexType>void ShortestPath(GraphType<VertexType> graph, VertexType startVertex)
 	{
-		int minDistance;
-		priority_queue<PathManager> priorityQueue;// = (10);
-		queue<VertexType> vertexQ;
-		int count = 0;
-
 		graph.ClearMarks();
 
 		PathManager<VertexType> pathManager = new PathManager<VertexType>(startVertex, startVertex);
 
+		priority_queue<PathManager> priorityQueue;// = (10);
 		priorityQueue.push(pathManager);//.Enqueue
+
+		queue<VertexType> queue;
 
 		cout << “Last Vertex Destination Distance” << endl;
 		cout << “------------------------------------------ - ” << endl;
+
+		int minDistance;
 
 		do
 		{
@@ -52,18 +60,15 @@ namespace DataStructures
 			{
 				graph.MarkVertex(pathManager.toVertex);
 
-				cout << pathManager.fromVertex;
-				cout << " ";
-				cout << pathManager.toVertex;
-				cout << " " << pathManager.distance << endl;
+				pathManager.PrintLine();
 
 				pathManager.fromVertex = pathManager.toVertex;
 				minDistance = pathManager.distance;
-				graph.GetToVertices(pathManager.fromVertex, vertexQ);
+				graph.GetToVertices(pathManager.fromVertex, queue);
 
-				while(!vertexQ.IsEmpty()) {
+				while(!queue.IsEmpty()) {
 					VertexType vertex;
-					vertexQ.Dequeue(vertex);
+					queue.Dequeue(vertex);
 					if(!graph.IsMarked(vertex))
 					{
 						pathManager.toVertex = vertex;
