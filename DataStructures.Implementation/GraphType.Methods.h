@@ -58,9 +58,9 @@ namespace DataStructures
 		int distance;
 	};
 
-	template<class VertexType>void ShortestPath(GraphType<VertexType> graph, VertexType startVertex)
+	template<class VertexType>void ShortestPath(GraphType<VertexType>* graph, VertexType startVertex)
 	{
-		graph.ClearMarks();
+		graph->ClearMarks();
 
 		PathManager<VertexType> pathManager(startVertex, startVertex);
 
@@ -77,9 +77,9 @@ namespace DataStructures
 		{
 			pathManager = priorityQueue.top();
 			priorityQueue.pop(); //.Dequeue(pathManager);
-			if(!graph.IsMarked(pathManager.toVertex))
+			if(!graph->IsMarked(pathManager.toVertex))
 			{
-				graph.MarkVertex(pathManager.toVertex);
+				graph->MarkVertex(pathManager.toVertex);
 
 				cout << pathManager << endl;
 
@@ -87,15 +87,15 @@ namespace DataStructures
 				minDistance = pathManager.distance;
 
 				queue<VertexType> queue;
-				graph.GetToVertices(pathManager.fromVertex, queue);
+				graph->GetToVertices(pathManager.fromVertex, queue);
 
 				while(!queue.empty()) {
 					VertexType vertex = queue.front();
 					queue.pop();
-					if(!graph.IsMarked(vertex))
+					if(!graph->IsMarked(vertex))
 					{
 						pathManager.toVertex = vertex;
-						pathManager.distance = minDistance + graph.WeightIs(pathManager.fromVertex, vertex);
+						pathManager.distance = minDistance + graph->WeightIs(pathManager.fromVertex, vertex);
 						priorityQueue.push(pathManager);// Enqueue(pathManager);
 					}
 				}
