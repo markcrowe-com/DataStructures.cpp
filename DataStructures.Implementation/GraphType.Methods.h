@@ -4,6 +4,7 @@
  */
 #include <queue>
 #include "GraphType.h"
+#include "../DataStructures.Implementation/AvlTreeNodeMethods.h"
 namespace DataStructures
 {
 	using namespace std;
@@ -20,15 +21,38 @@ namespace DataStructures
 
 		void PrintLine()
 		{
-			cout << fromVertex;
+			cout << TtoString(fromVertex);
 			cout << " ";
-			cout << toVertex;
+			cout << TtoString(toVertex);
 			cout << " " << distance << endl;
 		}
 		// < means greater distance
 		//bool operator<(PathManager otherItem);
-		//bool operator==(PathManager otherItem);
+
+		friend bool operator==(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
+		{
+			return lhs.fromVertex == rhs.fromVertex &&
+				lhs.toVertex == rhs.toVertex &&
+				lhs.distance == rhs.distance;
+		}
+		friend bool operator<(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
+		{
+			return
+				lhs.distance < rhs.distance;
+		}
+		friend bool operator<=(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
+		{
+			return
+				lhs.distance <= rhs.distance;
+		}
 		//bool operator<=(PathManager otherItem);
+
+		friend ostream& operator<<(ostream& os, const PathManager<VertexType>& pathManager)
+		{
+			os << pathManager.fromVertex << " " << pathManager.toVertex << " " << distance << endl;
+			return os;
+		}
+
 		//
 		//	Fields
 		//
@@ -41,21 +65,21 @@ namespace DataStructures
 	{
 		graph.ClearMarks();
 
-		PathManager<VertexType> pathManager = new PathManager<VertexType>(startVertex, startVertex);
+		PathManager<VertexType> pathManager(startVertex, startVertex);
 
-		priority_queue<PathManager> priorityQueue;// = (10);
+		priority_queue<PathManager<VertexType>> priorityQueue;// (10);// = (10);
+
 		priorityQueue.push(pathManager);//.Enqueue
 
-		queue<VertexType> queue;
-
-		cout << “Last Vertex Destination Distance” << endl;
-		cout << “------------------------------------------ - ” << endl;
+		cout << "Last Vertex Destination Distance" << endl;
+		cout << "-------------------------------------------" << endl;
 
 		int minDistance;
 
 		do
 		{
-			pathManager = priorityQueue.pop(); //.Dequeue(pathManager);
+			pathManager = priorityQueue.top();
+			priorityQueue.pop(); //.Dequeue(pathManager);
 			if(!graph.IsMarked(pathManager.toVertex))
 			{
 				graph.MarkVertex(pathManager.toVertex);
@@ -64,16 +88,17 @@ namespace DataStructures
 
 				pathManager.fromVertex = pathManager.toVertex;
 				minDistance = pathManager.distance;
+
+				queue<VertexType> queue;
 				graph.GetToVertices(pathManager.fromVertex, queue);
 
-				while(!queue.IsEmpty()) {
-					VertexType vertex;
-					queue.Dequeue(vertex);
+				while(!queue.empty()) {
+					VertexType vertex = queue.front();
+					queue.pop();
 					if(!graph.IsMarked(vertex))
 					{
 						pathManager.toVertex = vertex;
-						pathManager.distance = minDistance +
-							graph.WeightIs(pathManager.fromVertex, vertex);
+						pathManager.distance = minDistance + graph.WeightIs(pathManager.fromVertex, vertex);
 						priorityQueue.push(pathManager);// Enqueue(pathManager);
 					}
 				}

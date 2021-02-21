@@ -2,6 +2,7 @@
 /*
  * Copyright (c) 2021 Mark Crowe <https://github.com/markcrowe-com>. All rights reserved.
  */
+#include <iostream>
 #include <queue>
 using namespace std;
 namespace DataStructures
@@ -24,7 +25,7 @@ namespace DataStructures
 		bool IsMarked(VertexType) const;
 		#pragma region Methods : get
 		#pragma endregion
-		int WeightIs(VertexType, VertexType) const;
+		int WeightIs(VertexType, VertexType);
 		#pragma region Methods
 		#pragma endregion
 		void AddEdge(VertexType, VertexType, int);
@@ -64,7 +65,7 @@ namespace DataStructures
 	template<class VertexType>void GraphType<VertexType>::AddVertex(VertexType vertex)
 	{
 		vertices[numVertices] = vertex;
-		for(int index = 0; index < numVertices; index++)
+		for(int index = 0; index < this->numVertices; index++)
 		{
 			edges[numVertices][index] = NULL_EDGE;
 			edges[index][numVertices] = NULL_EDGE;
@@ -77,28 +78,31 @@ namespace DataStructures
 		int column = IndexOf(toVertex);
 		edges[row][column] = weight;
 	}
-	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType sourceVertex, VertexType targetVertex) const
+	template<class VertexType>int GraphType<VertexType>::WeightIs(VertexType sourceVertex, VertexType targetVertex)
 	{
-		int row = IndexOf(sourceVertex);
+		int row = this->IndexOf(sourceVertex);
 		int column = IndexOf(targetVertex);
 		return edges[row][column];
 	}
-	template<class VertexType>int IndexOf(VertexType vertex)
+	template<class VertexType>inline int GraphType<VertexType>::IndexOf(VertexType vertex)
 	{
-		for(int index = 0; index < this.numVertices; index++)
+		for(int index = 0; index < this->numVertices; index++)
 		{
-			if(vertex == vertices[index])
+			if(vertex == this->vertices[index])
 				return index;
 		}
 		return -1;
 	}
 	template<class VertexType>void GraphType<VertexType>::GetToVertices(VertexType vertex, queue<VertexType>& adjvertexQ)
 	{
-		int fromIndex = IndexOf(vertex);
+		int fromIndex = this->IndexOf(vertex);
 		for(int toIndex = 0; toIndex < numVertices; toIndex++)
 		{
 			if(edges[fromIndex][toIndex] != NULL_EDGE)
-				adjvertexQ.Enqueue(vertices[toIndex]);
+			{
+				adjvertexQ.push(vertices[toIndex]);
+			}
 		}
 	}
+
 }
