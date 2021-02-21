@@ -27,7 +27,7 @@ namespace DataStructures
 	};
 
 	//
-//	constructor/desturtor
+//	constructor/Destructor
 //
 	template<class T> AvlTreeComponentB<T>::AvlTreeComponentB()
 	{
@@ -96,7 +96,7 @@ namespace DataStructures
 					switch(tree->bf)
 					{
 						case  balance::LH: tree->bf = balance::EH; break;
-						case  balance::EH: tree->bf =  balance::RH; shorter = false;
+						case  balance::EH: tree->bf = balance::RH; shorter = false;
 							break;
 						case  balance::RH: DelRightBalance(tree, shorter);
 					}
@@ -134,7 +134,7 @@ namespace DataStructures
 
 		switch(ls->bf)
 		{
-			case  balance::LH:	tree->bf = ls->bf =  balance::EH;
+			case  balance::LH:	tree->bf = ls->bf = balance::EH;
 				RotateRight(tree);
 				taller = false;
 				break;

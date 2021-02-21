@@ -25,7 +25,7 @@ namespace DataStructures
 	};
 
 	//
-	//	constructor/desturtor
+	//	constructor/destructor
 	//
 	template<class T> AvlTreeComponent<T>::AvlTreeComponent()
 	{
