@@ -4,7 +4,6 @@
  */
 #include <queue>
 #include "GraphType.h"
-#include "../DataStructures.Implementation/AvlTreeNodeMethods.h"
 namespace DataStructures
 {
 	using namespace std;
@@ -19,13 +18,6 @@ namespace DataStructures
 			this->distance = 0;
 		}
 
-		void PrintLine()
-		{
-			cout << TtoString(fromVertex);
-			cout << " ";
-			cout << TtoString(toVertex);
-			cout << " " << distance << endl;
-		}
 		// < means greater distance
 		//bool operator<(PathManager otherItem);
 
@@ -49,7 +41,7 @@ namespace DataStructures
 
 		friend ostream& operator<<(ostream& os, const PathManager<VertexType>& pathManager)
 		{
-			os << pathManager.fromVertex << " " << pathManager.toVertex << " " << distance << endl;
+			os << pathManager.fromVertex << " " << pathManager.toVertex << " " << pathManager.distance;
 			return os;
 		}
 
@@ -84,7 +76,7 @@ namespace DataStructures
 			{
 				graph.MarkVertex(pathManager.toVertex);
 
-				pathManager.PrintLine();
+				cout << pathManager << endl;
 
 				pathManager.fromVertex = pathManager.toVertex;
 				minDistance = pathManager.distance;
