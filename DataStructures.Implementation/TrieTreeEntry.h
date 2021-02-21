@@ -19,13 +19,24 @@ namespace DataStructures
 	};
 	EntryType::EntryType()
 	{
+		for(int index = 0; index < MAXLENGTH; index++)
+		{
+			this->entryKey[index] = '\0';
+		}
 	}
 	EntryType::EntryType(char* key)
 	{
+		for(int index = 0; index < MAXLENGTH; index++)
+		{
+			this->entryKey[index] = key[index];
+		}
 	}
 	EntryType::EntryType(EntryType& entry)
 	{
-		//entryKey = entry.entryKey;
+		for(int index = 0; index < MAXLENGTH; index++)
+		{
+			this->entryKey[index] = entry.entryKey[index];
+		}
 	}
 	struct Person
 	{
