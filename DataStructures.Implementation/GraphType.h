@@ -22,7 +22,7 @@ namespace DataStructures
 		#pragma endregion
 		bool IsEmpty() const;
 		bool IsFull() const;
-		bool IsMarked(VertexType) const;
+		bool IsMarked(VertexType);
 		#pragma region Methods : get
 		#pragma endregion
 		int WeightIs(VertexType, VertexType);
@@ -62,6 +62,21 @@ namespace DataStructures
 		delete[] marks;
 		delete[] vertices;
 	}
+	template<class VertexType>
+	inline bool GraphType<VertexType>::IsEmpty() const
+	{
+		return this->numVertices == 0;
+	}
+	template<class VertexType>
+	inline bool GraphType<VertexType>::IsFull() const
+	{
+		return this->numVertices >= this->maxVertices;
+	}
+	template<class VertexType>
+	inline bool GraphType<VertexType>::IsMarked(VertexType vertex)
+	{
+		return (this->marks[this->IndexOf(vertex)] == true);
+	}
 	template<class VertexType>void GraphType<VertexType>::AddVertex(VertexType vertex)
 	{
 		vertices[numVertices] = vertex;
@@ -71,6 +86,11 @@ namespace DataStructures
 			edges[index][numVertices] = NULL_EDGE;
 		}
 		numVertices++;
+	}
+	template<class VertexType>
+	inline void GraphType<VertexType>::Clear()
+	{
+		this->vertices = NULL;
 	}
 	template<class VertexType>void GraphType<VertexType>::AddEdge(VertexType fromVertex, VertexType toVertex, int weight)
 	{
@@ -93,6 +113,14 @@ namespace DataStructures
 		}
 		return -1;
 	}
+	template<class VertexType>
+	inline void GraphType<VertexType>::ClearMarks()
+	{
+		for(int index = 0; index < this->numVertices; index++)
+		{
+			this->marks[index] = false;
+		}
+	}
 	template<class VertexType>void GraphType<VertexType>::GetToVertices(VertexType vertex, queue<VertexType>& adjvertexQ)
 	{
 		int fromIndex = this->IndexOf(vertex);
@@ -103,6 +131,12 @@ namespace DataStructures
 				adjvertexQ.push(vertices[toIndex]);
 			}
 		}
+	}
+
+	template<class VertexType>
+	inline void GraphType<VertexType>::MarkVertex(VertexType vertex)
+	{
+		this->marks[this->IndexOf(vertex)] = true;
 	}
 
 }
