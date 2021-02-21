@@ -11,6 +11,11 @@ namespace DataStructures
 	struct PathManager
 	{
 	public:
+		PathManager() {
+			//this->fromVertex = NULL;
+			//this->toVertex = NULL;
+			this->distance = 0;
+		}
 		PathManager(VertexType fromVertex, VertexType toVertex)
 		{
 			this->fromVertex = fromVertex;
@@ -96,5 +101,50 @@ namespace DataStructures
 				}
 			}
 		} while(!priorityQueue.empty());// .IsEmpty());
+	}
+
+	template<class VertexType>void ShortestPathLecturerVersion(GraphType<VertexType> graph, VertexType startVertex)
+	{
+		PathManager<VertexType> item;
+		int minDistance;
+
+		priority_queue<PathManager<VertexType>> pq;// (10); 	// Assume at most 10 vertices
+
+		VertexType vertex;
+		int count = 0;
+
+		graph.ClearMarks();
+		item.fromVertex = startVertex;
+		item.toVertex = startVertex;
+		item.distance = 0;
+		pq.push(item);
+		cout << "Last Vertex Destination Distance" << endl;
+		cout << "------------------------------------------ - " << endl;
+
+		do
+		{
+			item = pq.top();
+			pq.pop();
+			if(!graph.IsMarked(item.toVertex))
+			{
+				graph.MarkVertex(item.toVertex);
+				cout << item.fromVertex << " " << item.toVertex << " " << item.distance << endl;
+				item.fromVertex = item.toVertex;
+				minDistance = item.distance;
+				queue<VertexType> vertexQ;
+				graph.GetToVertices(item.fromVertex, vertexQ);
+
+				while(!vertexQ.empty()) {
+					vertex = vertexQ.front();
+					vertexQ.pop();
+					if(!graph.IsMarked(vertex))
+					{
+						item.toVertex = vertex;
+						item.distance = minDistance + graph.WeightIs(item.fromVertex, vertex);
+						pq.push(item);
+					}
+				}
+			}
+		} while(!pq.empty());
 	}
 }

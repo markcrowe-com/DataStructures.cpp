@@ -64,7 +64,7 @@ int main()
 	//avlTreeCommandApp.TestAvlTree = new AvlTreeComponentB<string>();
 	//avlTreeCommandApp.Run();
 
-	GraphType<Airport>* graph = new GraphType<Airport>();
+	GraphType<Airport> graph;
 
 	Airport v0("0");
 	Airport v1("1");
@@ -72,29 +72,31 @@ int main()
 	Airport v3("3");
 	Airport v4("4");
 
-	graph->AddVertex(v0);
-	graph->AddVertex(v1);
-	graph->AddVertex(v2);
-	graph->AddVertex(v3);
-	graph->AddVertex(v4);
+	graph.AddVertex(v0);
+	graph.AddVertex(v1);
+	graph.AddVertex(v2);
+	graph.AddVertex(v3);
+	graph.AddVertex(v4);
 
 
-	graph->AddEdge(v0, v1, 5);
-	graph->AddEdge(v0, v2, 3);
-	graph->AddEdge(v0, v4, 2);
+	graph.AddEdge(v0, v1, 5);
+	graph.AddEdge(v0, v2, 3);
+	graph.AddEdge(v0, v4, 2);
 
-	graph->AddEdge(v1, v2, 2);
-	graph->AddEdge(v1, v3, 6);
+	graph.AddEdge(v1, v2, 2);
+	graph.AddEdge(v1, v3, 6);
 
-	graph->AddEdge(v2, v1, 1);
-	graph->AddEdge(v2, v3, 2);
+	graph.AddEdge(v2, v1, 1);
+	graph.AddEdge(v2, v3, 2);
 
-	graph->AddEdge(v4, v1, 6);
-	graph->AddEdge(v4, v2, 10);
-	graph->AddEdge(v4, v3, 3);
+	graph.AddEdge(v4, v1, 6);
+	graph.AddEdge(v4, v2, 10);
+	graph.AddEdge(v4, v3, 3);
 
-
-	ShortestPath<Airport>(*graph, v0);
+	ShortestPathLecturerVersion<Airport>(graph, v0);
+	ShortestPathLecturerVersion<Airport>(graph, v0);
+	//TODO: Fix Error: Graph is destroyed by destructer after function call!
+	ShortestPath<Airport>(graph, v0);
 
 	/*PrefixTreeCommandApp prefixTreeCommandApp;
 	prefixTreeCommandApp.TestPrefixTree = new PrefixTreeMock<string>();
