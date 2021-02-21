@@ -94,6 +94,7 @@ int main()
 	graph.AddEdge(v4, v3, 3);
 
 	ShortestPathLecturerVersion<Airport>(graph, v0);
+	//TODO: Fix Error: Graph is destroyed by destructer after function call!
 	ShortestPathLecturerVersion<Airport>(graph, v0);
 	//TODO: Fix Error: Graph is destroyed by destructer after function call!
 	ShortestPath<Airport>(graph, v0);
