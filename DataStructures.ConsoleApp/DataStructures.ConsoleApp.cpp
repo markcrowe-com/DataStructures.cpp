@@ -68,9 +68,11 @@ void airportGraphExample()
 	graph.AddEdge(washington, atlanta, 600);
 	graph.AddEdge(washington, dallas, 1300);
 
-	ShortestPath<Vertex>(&graph, washington);
-	//TODO: Fix Error: Graph is destroyed by destructer after function call!
-	//ShortestPathLecturerVersion<Vertex>(graph, washington);
+	cout << "----------------------------------------" << endl;
+	cout << "Last Vertex\tDestination\tDistance" << endl;
+	cout << "----------------------------------------" << endl;
+	CoutShortestPaths<Vertex>(&graph, washington);
+	cout << "----------------------------------------" << endl << endl;
 }
 void graphExample()
 {
@@ -101,9 +103,11 @@ void graphExample()
 	graph.AddEdge(v4, v2, 10);
 	graph.AddEdge(v4, v3, 3);
 
-	ShortestPath<Vertex>(&graph, v0);
-	//TODO: Fix Error: Graph is destroyed by destructer after function call!
-	//ShortestPathLecturerVersion<Vertex>(graph, v0);
+	cout << "----------------------------------------" << endl;
+	cout << "Last Vertex\tDestination\tDistance" << endl;
+	cout << "----------------------------------------" << endl;
+	CoutShortestPaths<Vertex>(&graph, v0);
+	cout << "----------------------------------------" << endl << endl;
 }
 Vertex AddNewVertex(GraphType<Vertex>* graph, string name)
 {
