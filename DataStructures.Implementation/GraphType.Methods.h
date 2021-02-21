@@ -11,9 +11,10 @@ namespace DataStructures
 	struct PathManager
 	{
 	public:
-		PathManager() {
-			//this->fromVertex = NULL;
-			//this->toVertex = NULL;
+		PathManager()
+		{
+			this->fromVertex = NULL;
+			this->toVertex = NULL;
 			this->distance = 0;
 		}
 		PathManager(VertexType fromVertex, VertexType toVertex)
@@ -22,37 +23,19 @@ namespace DataStructures
 			this->toVertex = toVertex;
 			this->distance = 0;
 		}
-
-		// < means greater distance
-		//bool operator<(PathManager otherItem);
-
 		friend bool operator==(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
 		{
-			return lhs.fromVertex == rhs.fromVertex &&
-				lhs.toVertex == rhs.toVertex &&
-				lhs.distance == rhs.distance;
+			return lhs.distance == rhs.distance;
 		}
 		friend bool operator<(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
 		{
-			return
-				lhs.distance < rhs.distance;
+			return lhs.distance > rhs.distance;//Note lhs > rhs, not lhs < rhs
 		}
-		friend bool operator<=(const PathManager<VertexType>& lhs, const PathManager<VertexType>& rhs)
-		{
-			return
-				lhs.distance <= rhs.distance;
-		}
-		//bool operator<=(PathManager otherItem);
-
 		friend ostream& operator<<(ostream& os, const PathManager<VertexType>& pathManager)
 		{
-			os << pathManager.fromVertex << " " << pathManager.toVertex << " " << pathManager.distance;
+			os << pathManager.fromVertex << "\t" << pathManager.toVertex << "\t" << pathManager.distance;
 			return os;
 		}
-
-		//
-		//	Fields
-		//
 		VertexType fromVertex;
 		VertexType toVertex;
 		int distance;
