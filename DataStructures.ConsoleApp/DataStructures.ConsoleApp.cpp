@@ -40,12 +40,12 @@ int main()
 void airportGraphExample()
 {
 	GraphType<Vertex> graph;
-	Vertex atlanta = AddNewVertex(&graph, "Atlanta");
-	Vertex austin = AddNewVertex(&graph, "Austin");
-	Vertex chicago = AddNewVertex(&graph, "Chicago");
-	Vertex dallas = AddNewVertex(&graph, "Dallas");
-	Vertex denver = AddNewVertex(&graph, "Denver");
-	Vertex houston = AddNewVertex(&graph, "Houston");
+	Vertex atlanta = AddNewVertex(&graph, "Atlanta   ");
+	Vertex austin = AddNewVertex(&graph, "Austin    ");
+	Vertex chicago = AddNewVertex(&graph, "Chicago   ");
+	Vertex dallas = AddNewVertex(&graph, "Dallas    ");
+	Vertex denver = AddNewVertex(&graph, "Denver    ");
+	Vertex houston = AddNewVertex(&graph, "Houston   ");
 	Vertex washington = AddNewVertex(&graph, "Washington");
 
 	graph.AddEdge(atlanta, washington, 600);

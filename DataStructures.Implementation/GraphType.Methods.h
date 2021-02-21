@@ -68,8 +68,9 @@ namespace DataStructures
 
 		priorityQueue.push(pathManager);//.Enqueue
 
-		cout << "Last Vertex Destination Distance" << endl;
-		cout << "-------------------------------------------" << endl;
+		cout << "----------------------------------------" << endl;
+		cout << "Last Vertex\tDestination\tDistance" << endl;
+		cout << "----------------------------------------" << endl;
 
 		int minDistance;
 
@@ -101,6 +102,7 @@ namespace DataStructures
 				}
 			}
 		} while(!priorityQueue.empty());// .IsEmpty());
+		cout << "----------------------------------------" << endl << endl;
 	}
 
 	template<class VertexType>void ShortestPathLecturerVersion(GraphType<VertexType> graph, VertexType startVertex)
@@ -118,8 +120,9 @@ namespace DataStructures
 		item.toVertex = startVertex;
 		item.distance = 0;
 		pq.push(item);
-		cout << "Last Vertex Destination Distance" << endl;
-		cout << "------------------------------------------ - " << endl;
+		cout << "----------------------------------------" << endl;
+		cout << "Last Vertex\tDestination\tDistance" << endl;
+		cout << "------------------------------------------" << endl;
 
 		do
 		{
@@ -128,7 +131,7 @@ namespace DataStructures
 			if(!graph.IsMarked(item.toVertex))
 			{
 				graph.MarkVertex(item.toVertex);
-				cout << item.fromVertex << " " << item.toVertex << " " << item.distance << endl;
+				cout << item.fromVertex << "\t" << item.toVertex << "\t" << item.distance << endl;
 				item.fromVertex = item.toVertex;
 				minDistance = item.distance;
 				queue<VertexType> vertexQ;
@@ -146,5 +149,6 @@ namespace DataStructures
 				}
 			}
 		} while(!pq.empty());
+		cout << "----------------------------------------" << endl << endl;
 	}
 }
